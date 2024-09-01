@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <string.h>
+
+struct employee {
+
+  int id;
+  char name[100];
+  char desig[100];
+  int salary, gsalary;
+  float hra, da;
+};
+
+int main(void) {
+
+  int a, b, c, d, i, j, k;
+  char name_2[3];
+  char st[] = "st";
+  char nd[] = "nd";
+  char rd[] = "rd";
+  char th[] = "th";
+
+  // printf("Write the name");
+  // scanf("%s", name);
+  // printf("%s", name);
+
+  printf("How many employees do you want to enter? ");
+  scanf("%d", &a);
+  struct employee emp[a];
+  for (i = 0; i < a; i++) {
+
+    if (i + 1 == 1) {
+      strcpy(name_2, st);
+      // printf("%s", name);
+    } else if (i + 1 == 2) {
+      strcpy(name_2, nd);
+    } else if (i + 1 == 3) {
+      strcpy(name_2, rd);
+    } else if (i + 1 >= 3) {
+      strcpy(name_2, th);
+    }
+
+    printf("Enter the ID of %d%s employee:\t", i + 1, name_2);
+    scanf("%d", &emp[i].id);
+    printf("Enter the NAME of employee:\t");
+    scanf("%s", emp[i].name);
+    printf("Enter the DESIGNATION of employee:\t");
+    scanf("%s", emp[i].desig);
+    printf("Enter the BASE SALARY of employee:\t");
+    scanf("%d", &emp[i].salary);
+    printf("Enter the HRA of employee:\t");
+    scanf("%f", &emp[i].hra);
+    printf("Enter the DA of employee:\t");
+    scanf("%f", &emp[i].da);
+    emp[i].gsalary = emp[i].salary + (((emp[i].hra / 100) * emp[i].salary) +
+                                      ((emp[i].da / 100) * emp[i].salary));
+  }
+  for (j = 0; j < a; j++) {
+
+    if (j == 0) {
+      strcpy(name_2, st);
+      // printf("%s", name);
+    } else if (j == 1) {
+      strcpy(name_2, nd);
+    } else if (j == 2) {
+      strcpy(name_2, rd);
+    } else if (j >= 3) {
+      strcpy(name_2, th);
+    }
+
+    printf("\nThe deatils of %d%s employee are: \n", j + 1, name_2);
+    printf("ID: %d \t \n", emp[j].id);
+    printf("NAME: %s \t \n", emp[j].name);
+    printf("DESIGNATION: %s \t \n", emp[j].desig);
+    printf("SALARY: %d \t \n", emp[j].salary);
+    printf("HRA: %2f \t \n", emp[j].hra);
+    printf("DA: %2f \t \n", emp[j].da);
+    printf("Gross Salary : %d\n", emp[j].gsalary);
+  }
+}
