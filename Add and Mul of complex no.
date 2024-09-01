@@ -1,0 +1,46 @@
+#include <stdio.h>
+struct Complex 
+{
+  int real;
+  int imag;
+};
+void sum(struct Complex num1, struct Complex num2) 
+{
+  int rsum = 0, isum = 0;
+  rsum = num1.real + num2.real;
+  isum = num1.imag + num2.imag;
+  printf("Sum : %d+%di", rsum, isum);
+}
+void multi(struct Complex *num1, struct Complex *num2) 
+{
+  int rmulti, imulti;
+  rmulti = (num1->real * num2->real) - (num1->imag * num2->imag);
+  imulti = (num1->real * num2->imag) + (num2->real * num1->imag);
+  printf("Multi : %d+%di", rmulti, imulti);
+}
+int main() 
+{
+  int n;
+  struct Complex num1, num2;
+  printf("Enter Complex No.1: ");
+  scanf("%d %d", &num1.real, &num1.imag);
+  printf("Enter Complex No.2: ");
+  scanf("%d %d", &num2.real, &num2.imag);
+  printf("MENU :\n1. Addtion\n2. Multiplication\n");
+  printf("Enter your choice b/w 1 & 2: ");
+  scanf("%d", &n);
+  switch (n) 
+  {
+  case 1: {
+    sum(num1, num2);
+    break;
+  }
+  case 2: {
+    multi(&num1, &num2);
+    break;
+  }
+  default:
+    printf("Invalid Input!!");
+    return 0;
+  }
+}
